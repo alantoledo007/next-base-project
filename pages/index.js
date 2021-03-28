@@ -1,65 +1,46 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Cover from '../components/Cover';
+import Image from 'next/image';
+import MainLayout from '../layouts/MainLayout';
+import BrandsCarousel from '../components/BrandsCarousel';
+
+const myLoader = ({src, width, quality}) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <MainLayout>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      <Cover
+        title="it is a long established fact that a reader will be"
+        text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took"
+        primary_button_text="Primary action"
+        secondary_button_text="Secondary action"
+        MediaArea={
+          <Image
+            loader={myLoader}
+            alt="Picture of the author"
+            width={720}
+            height={480}
+            src="/assets/undraw_online_media_62jb.svg"
+          />
+        }
+      />
+      <BrandsCarousel
+        items={[
+          {alt: '', title: '', src: '/carousel/google.png'},
+          {alt: '', title: '', src: '/carousel/laravel.png'},
+          {alt: '', title: '', src: '/carousel/bbva.png'},
+          {alt: '', title: '', src: '/carousel/aerolineasargentinas.png'},
+          {alt: '', title: '', src: '/carousel/santanderrio.png'},
+          {alt: '', title: '', src: '/carousel/stackoverflow.png'},
+          {alt: '', title: '', src: '/carousel/pedidosya.png'},
+        ]}
+      />
+    </MainLayout>
+  );
 }
