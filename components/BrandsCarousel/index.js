@@ -1,26 +1,8 @@
-import {Box, Container, Fab} from '@material-ui/core';
-import BaseCarousel, {consts} from 'react-elastic-carousel';
+import {Container} from '@material-ui/core';
 import Section from '../shared/Section';
 import styled from 'styled-components';
-import {
-  ArrowBackIos,
-  ArrowBackRounded,
-  ArrowForwardIos,
-  ArrowForwardRounded,
-} from '@material-ui/icons';
-
-const CustomCarousel = styled(BaseCarousel)`
-  justify-content: space-between;
-  .rec-slider-container {
-    .rec-slider {
-      .rec-carousel-item {
-        div {
-          outline: none;
-        }
-      }
-    }
-  }
-`;
+import TitleAndSubtitle from '../shared/TitleAndSubtitle';
+import Carousel from '../shared/Carousel';
 
 const Image = styled.img`
   width: 200px;
@@ -30,7 +12,7 @@ const ImageContainer = styled.div`
   position: relative;
   filter: grayscale(100%);
   opacity: 0.2;
-  width: 250px;
+  width: 250px !important;
   height: 150px;
   background-color: #f1f1f1;
   overflow: hidden;
@@ -45,72 +27,24 @@ const ImageContainer = styled.div`
   }
 `;
 
-export default function Carousel({items, section_props}) {
+export default function BrandsCarousel({
+  items,
+  section_props,
+  title,
+  subtitle,
+}) {
   return (
     <Section bgcolor="#fff" {...section_props}>
       <Container>
-        <CustomCarousel
-          renderArrow={Arrow}
-          renderPagination={Pagination}
-          breakPoints={[
-            {width: 1, itemsToShow: 1},
-            {width: 550, itemsToShow: 2, itemsToScroll: 2},
-            {width: 850, itemsToShow: 4, itemsToScroll: 2},
-            {width: 1450, itemsToShow: 5},
-            {width: 1750, itemsToShow: 6},
-          ]}>
+        {title && <TitleAndSubtitle title={title} subtitle={subtitle} />}
+        <Carousel>
           {items?.map((item, key) => (
             <ImageContainer key={key}>
               <Image draggable="false" {...item} />
             </ImageContainer>
           ))}
-        </CustomCarousel>
+        </Carousel>
       </Container>
     </Section>
   );
 }
-
-const ArrowContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Arrow = ({type, onClick, isEdge}) => {
-  return (
-    <ArrowContainer>
-      <Fab color="primary" onClick={onClick} disabled={isEdge}>
-        {type === consts.PREV ? <ArrowBackRounded /> : <ArrowForwardRounded />}
-      </Fab>
-    </ArrowContainer>
-  );
-};
-
-const Circle = styled(Box)`
-  padding: 10px;
-  border-radius: 10px;
-  display: block;
-  cursor: pointer;
-  transition: all 0.4s ease-in;
-  opacity: 0.8;
-`;
-
-const Pagination = ({pages, activePage, onClick}) => {
-  return (
-    <Box display="flex" justifyContent="center" width="100%" direction="row">
-      {pages.map((page) => {
-        const isActivePage = activePage === page;
-        return (
-          <Circle
-            mx={1}
-            mt={2}
-            shadow={1}
-            bgcolor={isActivePage ? 'primary.main' : '#e1e1e1'}
-            key={page}
-            onClick={() => onClick(page)}
-            component="span"
-          />
-        );
-      })}
-    </Box>
-  );
-};
