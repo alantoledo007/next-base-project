@@ -5,6 +5,8 @@ import MainLayout from '../layouts/MainLayout';
 import BrandsCarousel from '../components/BrandsCarousel';
 import Features from '../components/Features';
 import TestiminialsCarousel from '../components/TestimonialsCarousel';
+import FrequentQuestions from '../components/FrequentQuestions';
+import {Typography} from '@material-ui/core';
 
 const myLoader = ({src, width, quality}) => {
   return `${src}?w=${width}&q=${quality || 75}`;
@@ -101,6 +103,8 @@ export default function Home() {
       />
 
       <TestiminialsCarousel
+        title="Testimonials"
+        subtitle="Our clients are happy!"
         items={[
           {
             avatar: {src: '/testimonials/brown.jpeg'},
@@ -131,6 +135,116 @@ export default function Home() {
             name: 'Lorem Name',
             text:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris',
+          },
+        ]}
+      />
+
+      <FrequentQuestions
+        title="Frequest questions"
+        subtitle="Don't forget, you can contact us on anytime"
+        items={[
+          {
+            title: 'Lorem ipsum dolor sit amet?',
+            content: (
+              <Typography component="p">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                sagittis felis erat, nec vulputate nibh mattis quis.
+                Pellentesque habitant morbi tristique senectus et netus et
+                malesuada fames ac turpis egestas. Cras pharetra non lectus ut
+                bibendum. Etiam suscipit luctus egestas. Nunc vitae placerat
+                metus, sed pellentesque risus. Suspendisse potenti. Vestibulum
+                volutpat felis eget urna tempus gravida. Nunc dui risus, viverra
+                in erat et, fermentum interdum dolor. Ut non lorem ipsum. Donec
+                lobortis eu elit et venenatis. Praesent id arcu porta tellus
+                feugiat hendrerit. Sed pretium ullamcorper felis, id tincidunt
+                nunc suscipit ac.
+              </Typography>
+            ),
+          },
+          {
+            title: 'Lorem ipsum dolor sit amet?',
+            subtitle: 'This is a subtitle',
+            content: (
+              <>
+                <Typography component="p" paragraph>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  sagittis felis erat, nec vulputate nibh mattis quis.
+                  Pellentesque habitant morbi tristique senectus et netus et
+                  malesuada fames ac turpis egestas. Cras pharetra non lectus ut
+                  bibendum. Etiam suscipit luctus egestas. Nunc vitae placerat
+                  metus, sed pellentesque risus. Suspendisse potenti. Vestibulum
+                  volutpat felis eget urna tempus gravida. Nunc dui risus,
+                  viverra in erat et, fermentum interdum dolor. Ut non lorem
+                  ipsum. Donec lobortis eu elit et venenatis. Praesent id arcu
+                  porta tellus feugiat hendrerit. Sed pretium ullamcorper felis,
+                  id tincidunt nunc suscipit ac.
+                </Typography>
+                <Typography component="p">
+                  Ut eleifend lacus in ex interdum feugiat. Phasellus lacinia
+                  faucibus ex. Integer sit amet accumsan dui. Integer diam
+                  tortor, auctor vel maximus eu, faucibus quis sem. Curabitur et
+                  purus et nisi tempor interdum eu at velit. Quisque id placerat
+                  mi. Interdum et malesuada fames ac ante ipsum primis in
+                  faucibus. Fusce et suscipit justo, non porttitor enim. Class
+                  aptent taciti sociosqu ad litora torquent per conubia nostra,
+                  per inceptos himenaeos.
+                </Typography>
+              </>
+            ),
+          },
+          {
+            title: 'Lorem ipsum dolor sit amet?',
+            content: (
+              <Typography component="p">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                sagittis felis erat, nec vulputate nibh mattis quis.
+                Pellentesque habitant morbi tristique senectus et netus et
+                malesuada fames ac turpis egestas. Cras pharetra non lectus ut
+                bibendum. Etiam suscipit luctus egestas. Nunc vitae placerat
+                metus, sed pellentesque risus. Suspendisse potenti. Vestibulum
+                volutpat felis eget urna tempus gravida. Nunc dui risus, viverra
+                in erat et, fermentum interdum dolor. Ut non lorem ipsum. Donec
+                lobortis eu elit et venenatis. Praesent id arcu porta tellus
+                feugiat hendrerit. Sed pretium ullamcorper felis, id tincidunt
+                nunc suscipit ac.
+              </Typography>
+            ),
+          },
+          {
+            title: 'Lorem ipsum dolor sit amet?',
+            content: (
+              <Typography component="p">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                sagittis felis erat, nec vulputate nibh mattis quis.
+                Pellentesque habitant morbi tristique senectus et netus et
+                malesuada fames ac turpis egestas. Cras pharetra non lectus ut
+                bibendum. Etiam suscipit luctus egestas. Nunc vitae placerat
+                metus, sed pellentesque risus. Suspendisse potenti. Vestibulum
+                volutpat felis eget urna tempus gravida. Nunc dui risus, viverra
+                in erat et, fermentum interdum dolor. Ut non lorem ipsum. Donec
+                lobortis eu elit et venenatis. Praesent id arcu porta tellus
+                feugiat hendrerit. Sed pretium ullamcorper felis, id tincidunt
+                nunc suscipit ac.
+              </Typography>
+            ),
+          },
+          {
+            title: 'Lorem ipsum dolor sit amet?',
+            content: (
+              <Typography component="p">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                sagittis felis erat, nec vulputate nibh mattis quis.
+                Pellentesque habitant morbi tristique senectus et netus et
+                malesuada fames ac turpis egestas. Cras pharetra non lectus ut
+                bibendum. Etiam suscipit luctus egestas. Nunc vitae placerat
+                metus, sed pellentesque risus. Suspendisse potenti. Vestibulum
+                volutpat felis eget urna tempus gravida. Nunc dui risus, viverra
+                in erat et, fermentum interdum dolor. Ut non lorem ipsum. Donec
+                lobortis eu elit et venenatis. Praesent id arcu porta tellus
+                feugiat hendrerit. Sed pretium ullamcorper felis, id tincidunt
+                nunc suscipit ac.
+              </Typography>
+            ),
           },
         ]}
       />

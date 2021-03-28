@@ -9,7 +9,6 @@ import Section from '../shared/Section';
 import styled from 'styled-components';
 import TitleAndSubtitle from '../shared/TitleAndSubtitle';
 import Carousel from '../shared/Carousel';
-import {FormatQuote} from '@material-ui/icons';
 
 const CustomAvatar = styled(Avatar)`
   width: 74px !important;
