@@ -1,6 +1,6 @@
 {
-  "name": "next-with-material-ui-and-styled-components",
-  "version": "0.1.0",
+  "name": "next-base-project",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
