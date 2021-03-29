@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Box,
   Button,
   Divider,
   Drawer,
@@ -19,6 +20,7 @@ import Link from 'next/link';
 import {useState} from 'react';
 import NavbarLink, {LinksContainer} from './NavbarLink';
 import {useRouter} from 'next/router';
+import Image from 'next/image';
 
 const {
   publicRuntimeConfig: {app_name},
@@ -46,29 +48,31 @@ export default function Header() {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Link href="/">
-            <a>
-              <Typography variant="h6" color="primary">
-                {app_name}
-              </Typography>
-            </a>
-          </Link>
-          <LinksContainer>
-            <div>
-              <Hidden smDown>
-                <NavbarLink href="/">Home</NavbarLink>
-                <NavbarLink href="/about">About us</NavbarLink>
-              </Hidden>
-            </div>
-            <div>
-              <Button variant="text" color="primary">
-                Sign In
-              </Button>
-              <Button variant="contained" color="primary">
-                Sign Up
-              </Button>
-            </div>
-          </LinksContainer>
+          <Box mr={2}>
+            <Link href="/">
+              <a>
+                <Image width="100" height="30" src="/logo.svg" />
+              </a>
+            </Link>
+          </Box>
+          <Box mx="auto">
+            <Hidden smDown>
+              <NavbarLink href="/">Home</NavbarLink>
+              <NavbarLink href="/about">About us</NavbarLink>
+            </Hidden>
+          </Box>
+          <Box display="flex">
+            <Box mr={1}>
+              <Link href="/sign-in">
+                <Button component="a" variant="text" color="primary">
+                  Sign In
+                </Button>
+              </Link>
+            </Box>
+            <Button variant="contained" color="primary">
+              Sign Up
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer
