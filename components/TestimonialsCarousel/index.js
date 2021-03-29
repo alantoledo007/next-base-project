@@ -32,7 +32,7 @@ export default function TestiminialsCarousel({
             {width: 550, itemsToShow: 2},
           ]}>
           {items?.map((item, key) => (
-            <Card>
+            <Card key={key}>
               <CustomAvatar loading="lazy" {...item.avatar} />
               <CardContent>
                 <Typography align="center" variant="h5" component="h4">

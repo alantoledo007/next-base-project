@@ -38,6 +38,7 @@ export default function FrequentQuestions({items, title, subtitle}) {
         {title && <TitleAndSubtitle title={title} subtitle={subtitle} />}
         {items?.map((item, key) => (
           <Accordion
+            key={key}
             expanded={expanded === `panel${key}`}
             onChange={handleChange(`panel${key}`)}>
             <AccordionSummary
