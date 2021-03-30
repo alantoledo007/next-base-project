@@ -4,8 +4,9 @@ import {
   Checkbox,
   Container,
   Divider,
+  FormControl,
   FormControlLabel,
-  Grid,
+  FormHelperText,
   TextField,
   Typography,
 } from '@material-ui/core';
@@ -14,14 +15,22 @@ import AuthLayout from '../layouts/AuthLayout';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import getConfig from 'next/config';
 import Link from 'next/link';
+import MaterialLink from '@material-ui/core/Link';
+
+const {
+  publicRuntimeConfig: {app_name},
+} = getConfig();
 
 const schema = yup.object().shape({
+  fullname: yup.string().required().min(4),
   email: yup.string().email().required(),
   password: yup.string().required().min(8),
+  agreement: yup.bool().oneOf([true], 'Please accept to continue'),
 });
 
-export default function SignIn() {
+export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [disabledSubmit, setDisabledSubmit] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -30,8 +39,7 @@ export default function SignIn() {
   });
 
   useEffect(() => {
-    const value =
-      Object.keys(errors).length > 0 || !watch('email') || !watch('password');
+    const value = Object.keys(errors).length > 0;
     if (value !== disabledSubmit) setDisabledSubmit(value);
   }, [errors, watch]);
 
@@ -44,13 +52,26 @@ export default function SignIn() {
       <Container>
         <Box mb={2}>
           <Typography align="center" component="h1" variant="h5">
-            SIGN IN
+            CREATE AN ACCOUNT
           </Typography>
           <Typography align="center" component="p" variant="overline">
-            Hi, Welcome again!
+            Welcome to {app_name}
           </Typography>
         </Box>
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+          <Box mb={3}>
+            <TextField
+              name="fullname"
+              error={!!errors.fullname?.type}
+              inputRef={register}
+              label="Fullname"
+              variant="outlined"
+              fullWidth
+              helperText={errors.fullname?.message}
+              type="text"
+            />
+          </Box>
+
           <Box mb={3}>
             <TextField
               name="email"
@@ -93,8 +114,33 @@ export default function SignIn() {
               variant="contained"
               disabled={disabledSubmit || loading}
               color="primary">
-              {loading ? 'loading..' : 'Sign In'}
+              {loading ? 'loading..' : 'Sign Up'}
             </Button>
+            <Box display="flex" justifyContent="center">
+              <FormControl error={true}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      size="small"
+                      name="agreement"
+                      inputRef={register}
+                    />
+                  }
+                  label={
+                    <>
+                      I accept the{' '}
+                      <MaterialLink href="/">terms and conditions</MaterialLink>{' '}
+                      {'&'}{' '}
+                      <MaterialLink href="/">privacy policies</MaterialLink>
+                    </>
+                  }
+                />
+                {errors.agreement?.message && (
+                  <FormHelperText>{errors.agreement.message}</FormHelperText>
+                )}
+              </FormControl>
+            </Box>
           </Box>
 
           <Divider variant="middle" />
@@ -102,24 +148,11 @@ export default function SignIn() {
             <Typography align="center" variant="overline" component="h4">
               Do you need help?
             </Typography>
-            <Grid container spacing={1}>
-              <Grid item xs={12} sm={6}>
-                <Link href="/sign-up">
-                  <Button
-                    component="a"
-                    variant="outlined"
-                    fullWidth
-                    size="large">
-                    Don't have an account
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Button component="a" variant="outlined" fullWidth size="large">
-                  Forget my passowrd
-                </Button>
-              </Grid>
-            </Grid>
+            <Link href="/sign-in">
+              <Button component="a" variant="outlined" fullWidth size="large">
+                Already have an account
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Container>

@@ -11,20 +11,14 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
-import getConfig from 'next/config';
 import Link from 'next/link';
 import {useState} from 'react';
-import NavbarLink, {LinksContainer} from './NavbarLink';
+import NavbarLink from './NavbarLink';
 import {useRouter} from 'next/router';
 import Image from 'next/image';
-
-const {
-  publicRuntimeConfig: {app_name},
-} = getConfig();
 
 export default function Header() {
   const router = useRouter();
@@ -69,9 +63,11 @@ export default function Header() {
                 </Button>
               </Link>
             </Box>
-            <Button variant="contained" color="primary">
-              Sign Up
-            </Button>
+            <Link href="/sign-up">
+              <Button variant="contained" color="primary">
+                Sign Up
+              </Button>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
@@ -96,14 +92,26 @@ export default function Header() {
         <Divider />
         <List>
           <ListItem>
-            <Button variant="outlined" fullWidth color="primary">
-              Sign in
-            </Button>
+            <Link href="/sign-in">
+              <Button
+                variant="outlined"
+                component="a"
+                fullWidth
+                color="primary">
+                Sign in
+              </Button>
+            </Link>
           </ListItem>
           <ListItem>
-            <Button variant="contained" fullWidth color="primary">
-              Create an account
-            </Button>
+            <Link href="/sign-up">
+              <Button
+                variant="contained"
+                component="a"
+                fullWidth
+                color="primary">
+                Create an account
+              </Button>
+            </Link>
           </ListItem>
         </List>
       </Drawer>
