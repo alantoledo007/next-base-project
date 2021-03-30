@@ -12,12 +12,21 @@ import {
 import {useEffect, useState} from 'react';
 import AuthLayout from '../layouts/AuthLayout';
 import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required().min(8),
+});
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [disabledSubmit, setDisabledSubmit] = useState(true);
   const [loading, setLoading] = useState(false);
-  const {register, handleSubmit, errors, watch} = useForm();
+  const {register, handleSubmit, errors, watch} = useForm({
+    resolver: yupResolver(schema),
+  });
 
   useEffect(() => {
     const value =
@@ -45,10 +54,11 @@ export default function SignIn() {
             <TextField
               name="email"
               error={!!errors.email?.type}
-              inputRef={register({required: true})}
+              inputRef={register}
               label="E-Mail address"
               variant="outlined"
               fullWidth
+              helperText={errors.email?.message}
               type="text"
             />
           </Box>
@@ -60,7 +70,8 @@ export default function SignIn() {
               fullWidth
               name="password"
               error={!!errors.password?.type}
-              inputRef={register({required: true})}
+              helperText={errors.password?.message}
+              inputRef={register}
               type={showPassword ? 'text' : 'password'}
             />
             <FormControlLabel
