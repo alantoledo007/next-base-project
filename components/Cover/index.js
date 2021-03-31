@@ -20,13 +20,19 @@ export default function Cover(props) {
     <Section>
       <Container {...container_props}>
         <Grid alignItems="center" container spacing={3} {...grid_props}>
-          <Grid item md={6} xs={12}>
+          <Grid item md={MediaArea ? 6 : 12} xs={12}>
             <Typography variant="h3" paragraph component="h1" {...title_props}>
               {title}
             </Typography>
-            <Typography variant="body1" paragraph component="p" {...text_props}>
-              {text}
-            </Typography>
+            {text && (
+              <Typography
+                variant="body1"
+                paragraph
+                component="p"
+                {...text_props}>
+                {text}
+              </Typography>
+            )}
             {primary_button_text && (
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
@@ -56,11 +62,13 @@ export default function Cover(props) {
               </Grid>
             )}
           </Grid>
-          <Grid item md={6} xs={12}>
-            <Box display="flex" justifyContent="center">
-              {MediaArea}
-            </Box>
-          </Grid>
+          {MediaArea && (
+            <Grid item md={6} xs={12}>
+              <Box display="flex" justifyContent="center">
+                {MediaArea}
+              </Box>
+            </Grid>
+          )}
         </Grid>
       </Container>
     </Section>

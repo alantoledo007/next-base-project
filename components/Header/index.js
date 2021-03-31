@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
+import EmailIcon from '@material-ui/icons/Email';
 import Link from 'next/link';
 import {useState} from 'react';
 import NavbarLink from './NavbarLink';
@@ -52,7 +53,7 @@ export default function Header() {
           <Box mx="auto">
             <Hidden smDown>
               <NavbarLink href="/">Home</NavbarLink>
-              <NavbarLink href="/about">About us</NavbarLink>
+              <NavbarLink href="/contact">Contact</NavbarLink>
             </Hidden>
           </Box>
           <Box display="flex">
@@ -82,11 +83,11 @@ export default function Header() {
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button onClick={() => redirectTo('/about')}>
+          <ListItem button onClick={() => redirectTo('/contact')}>
             <ListItemIcon>
-              <HomeIcon />
+              <EmailIcon />
             </ListItemIcon>
-            <ListItemText primary="About us" />
+            <ListItemText primary="Contact" />
           </ListItem>
         </List>
         <Divider />
